@@ -100,7 +100,6 @@ function minus(a, b){
 function mul(a, b){
     let runningSum = '0';
     
-    //elementary school multiplication - complexity O(n^2)
     let zeroPadding = '';
     for(let i = a.length - 1; i > -1; i--){
         let res = zeroPadding;

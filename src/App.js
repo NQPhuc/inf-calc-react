@@ -5,8 +5,8 @@ import React, { useState } from 'react';
 
 
 function App() {
-  const [value1, setValue1] = useState('');
-  const [value2, setValue2] = useState('');
+  const [value1, setValue1] = useState('0');
+  const [value2, setValue2] = useState('0');
   const [valueOp, setValueOp] = useState('+');
   const [valueRes, setValueRes] = useState('');
   
@@ -17,28 +17,18 @@ function App() {
 
   return (
     <div className="App">
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> */}
-      <p>integer 1: </p> <textarea id="a" rows="6" cols="100" value={value1} onChange={(event) => {if(Calc.isValidInteger(event.target.value)) setValue1(event.target.value);}}></textarea><br/>
-      <p>integer 2: </p> <textarea id="b" rows="6" cols="100" value={value2} onChange={(event) => {if(Calc.isValidInteger(event.target.value)) setValue2(event.target.value);}}></textarea><br/>
+      <p>integer 1: </p> <textarea id="a" rows="6" cols="100" value={value1} onChange={(event) => {if(Calc.isValidInteger(event.target.value)) setValue1(event.target.value);}}></textarea>
+      <button type="button" onClick={() => setValue1('0')}>Reset</button>
+      <br/>
+      <p>integer 2: </p> <textarea id="b" rows="6" cols="100" value={value2} onChange={(event) => {if(Calc.isValidInteger(event.target.value)) setValue2(event.target.value);}}></textarea>
+      <button type="button" onClick={() => setValue2('0')}>Reset</button>
+      <br/>
       <p>operator: </p>
       <select id="op" onChange={(event) => setValueOp(event.target.value)}>
           <option value="+">+</option>
           <option value="-">-</option>
           <option value="*">*</option>
-          <option value="%">modulus</option>
+          <option value="%">%</option>
       </select><br/>
       <button type="button" onClick={() => updateResult()}>Calculate</button>
       <br/>
