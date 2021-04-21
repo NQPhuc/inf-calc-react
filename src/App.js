@@ -1,10 +1,23 @@
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
+import * as Calc from './calc.js';
+import React, { useState } from 'react';
+
 
 function App() {
+  const [value1, setValue1] = useState('');
+  const [value2, setValue2] = useState('');
+  const [valueOp, setValueOp] = useState('+');
+  const [valueRes, setValueRes] = useState('');
+  
+  const updateResult = () => {
+    let result = Calc.calculate(value1, value2, valueOp);
+    setValueRes(result);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
+      {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
@@ -17,7 +30,21 @@ function App() {
         >
           Learn React
         </a>
-      </header>
+      </header> */}
+      <p>integer 1: </p> <br/><textarea id="a" rows="6" cols="100" value={value1} onChange={(event) => setValue1(event.target.value)}></textarea><br/>
+      <p>integer 2: </p> <br/><textarea id="b" rows="6" cols="100" value={value2} onChange={(event) => setValue2(event.target.value)}></textarea><br/>
+      <p>operator: </p>
+      <select id="op" onChange={(event) => setValueOp(event.target.value)}>
+          <option value="+">+</option>
+          <option value="-">-</option>
+          <option value="*">*</option>
+          <option value="%">modolus</option>
+      </select><br/>
+      <button type="button" onClick={() => updateResult()}>Calculate</button>
+      <br/>
+
+      <p>Result: </p> <br/><textarea id="result" rows="10" cols="100" value={valueRes}></textarea>
+
     </div>
   );
 }
