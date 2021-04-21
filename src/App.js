@@ -19,19 +19,21 @@ function App() {
     <div className="App">
       <p>integer 1: </p> <textarea id="a" rows="6" cols="100" value={value1} onChange={(event) => {if(Calc.isValidInteger(event.target.value)) setValue1(event.target.value);}}></textarea>
       <button type="button" onClick={() => setValue1('0')}>Reset</button>
-      <br/>
+
       <p>integer 2: </p> <textarea id="b" rows="6" cols="100" value={value2} onChange={(event) => {if(Calc.isValidInteger(event.target.value)) setValue2(event.target.value);}}></textarea>
       <button type="button" onClick={() => setValue2('0')}>Reset</button>
-      <br/>
-      <p>operator: </p>
-      <select id="op" onChange={(event) => setValueOp(event.target.value)}>
-          <option value="+">+</option>
-          <option value="-">-</option>
-          <option value="*">*</option>
-          <option value="%">%</option>
-      </select><br/>
+
+      <p>
+        operator: 
+        <select id="op" onChange={(event) => setValueOp(event.target.value)}>
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="%">%</option>
+        </select><br/>
+      </p>
+      
       <button type="button" onClick={() => updateResult()}>Calculate</button>
-      <br/>
 
       <p>Result: </p> <textarea id="result" rows="10" cols="100" value={valueRes} disabled></textarea>
 

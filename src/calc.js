@@ -3,7 +3,6 @@
     * the carry is not necessary a single digit 
 */
 export function getDigitAndCarry(n, base){
-    console.log(n % base, Math.floor(n / base));
     return [n % base, Math.floor(n / base)];
 }
 
@@ -13,7 +12,7 @@ export function getDigitAndCarry(n, base){
 */
 function getDigitAndBorrow(n, base){
     if (n >= 0) return [n, 0];
-    console.log(base - ((-n) % base), Math.ceil((-n) / base));
+    //console.log(base - ((-n) % base), Math.ceil((-n) / base));
     return [base -  ((-n) % base), Math.ceil((-n) / base)];
 }
 
@@ -69,7 +68,7 @@ function minus(a, b){
     let borrow = 0;
     let swapped = false;
 
-    console.log(a, '-', b);
+    //console.log(a, '-', b);
     if(smallerThan(a, b)){
         let temp = a;
         a = b;
@@ -127,7 +126,6 @@ function mod(a, b){
     if(smallerThan(a, b)) return a;
 
     let B = b;
-    //this could be improve to become a single operation by comparing length of a and b
     while (smallerThan(mulByTen(B), a)){ 
         B = mulByTen(B);
     }
