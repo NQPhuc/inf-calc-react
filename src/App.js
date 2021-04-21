@@ -31,19 +31,19 @@ function App() {
           Learn React
         </a>
       </header> */}
-      <p>integer 1: </p> <br/><textarea id="a" rows="6" cols="100" value={value1} onChange={(event) => setValue1(event.target.value)}></textarea><br/>
-      <p>integer 2: </p> <br/><textarea id="b" rows="6" cols="100" value={value2} onChange={(event) => setValue2(event.target.value)}></textarea><br/>
+      <p>integer 1: </p> <textarea id="a" rows="6" cols="100" value={value1} onChange={(event) => setValue1(event.target.value)}></textarea><br/>
+      <p>integer 2: </p> <textarea id="b" rows="6" cols="100" value={value2} onChange={(event) => setValue2(event.target.value)}></textarea><br/>
       <p>operator: </p>
       <select id="op" onChange={(event) => setValueOp(event.target.value)}>
           <option value="+">+</option>
           <option value="-">-</option>
           <option value="*">*</option>
-          <option value="%">modolus</option>
+          <option value="%">modulus</option>
       </select><br/>
       <button type="button" onClick={() => updateResult()}>Calculate</button>
       <br/>
 
-      <p>Result: </p> <br/><textarea id="result" rows="10" cols="100" value={valueRes}></textarea>
+      <p>Result: </p> <textarea id="result" rows="10" cols="100" value={valueRes} disabled></textarea>
 
     </div>
   );

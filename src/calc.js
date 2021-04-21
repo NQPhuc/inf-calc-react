@@ -11,13 +11,18 @@ export function getDigitAndCarry(n, base){
 * return an array of [digit, borrow] for a number n depending on the base
 * the borrow is not necessary a single digit
 */
-export function getDigitAndBorrow(n, base){
+function getDigitAndBorrow(n, base){
     if (n >= 0) return [n, 0];
     console.log(base - ((-n) % base), Math.ceil((-n) / base));
     return [base -  ((-n) % base), Math.ceil((-n) / base)];
 }
 
-export function plus(a, b){
+function isValidInteger(text){
+    let regularExpression = /^-?[0-9]+$/;
+    return regularExpression.test(text);
+}
+
+function plus(a, b){
     let res = '';
     let carry = 0;
     if(a.length < b.length){
@@ -46,7 +51,7 @@ export function plus(a, b){
 /**
  * compare two positive number (leading zero trimmed), return true if a < b else return false  
  */
-export function smallerThan(a, b){
+function smallerThan(a, b){
     if(a.length < b.length) return true;
     if(a.length > b.length) return false;
     for(let i = 0; i < a.length; i++){
@@ -59,7 +64,7 @@ export function smallerThan(a, b){
     }
     return false; //this line is execute only when a == b
 }
-export function minus(a, b){
+function minus(a, b){
     let res = '';
     let borrow = 0;
     let swapped = false;
@@ -92,7 +97,7 @@ export function minus(a, b){
     }
     return res;
 }
-export function mul(a, b){
+function mul(a, b){
     let runningSum = '0';
     
     //elementary school multiplication - complexity O(n^2)
@@ -115,10 +120,10 @@ export function mul(a, b){
     return runningSum;
 }
 
-export function mulByTen(num){
+function mulByTen(num){
     return num + '0';
 }
-export function mod(a, b){
+function mod(a, b){
     if(b === '0') return 'undefined';
     if(smallerThan(a, b)) return a;
 
@@ -131,7 +136,7 @@ export function mod(a, b){
     
     return mod(remain, b);
 }
-export function trimZero(num){
+function trimZero(num){
     let numIsMinus = (num[0] === '-');
     if(numIsMinus) num = num.slice(1);
     while(num[0] === '0' && num.length > 1){
@@ -148,10 +153,10 @@ export function trimZero(num){
  * @returns 
  */
 export function calculate(a, b, op){
-    //let a = document.getElementById('a').value;
-    //let b = document.getElementById('b').value;
-    //let op = document.getElementById('op').value;
     let res = -999
+
+    if(!isValidInteger(a)) return "wrong input";
+    if(!isValidInteger(b)) return "wrong input";
 
     let aIsNeg = false;
     let bIsNeg = false;
@@ -220,10 +225,8 @@ export function calculate(a, b, op){
         }
     }
     else{
-        console.log('Wrong operator');
-        return;
+        return 'Wrong operator';
     }
 
-    return res;
-    //document.getElementById('result').innerHTML = trimZero(res);
+    return trimZero(res);
 }
