@@ -17,7 +17,7 @@ function getDigitAndBorrow(n, base){
     return [base -  ((-n) % base), Math.ceil((-n) / base)];
 }
 
-function isValidInteger(text){
+export function isValidInteger(text){
     let regularExpression = /^-?[0-9]+$/;
     return regularExpression.test(text);
 }

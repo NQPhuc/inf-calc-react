@@ -31,8 +31,8 @@ function App() {
           Learn React
         </a>
       </header> */}
-      <p>integer 1: </p> <textarea id="a" rows="6" cols="100" value={value1} onChange={(event) => setValue1(event.target.value)}></textarea><br/>
-      <p>integer 2: </p> <textarea id="b" rows="6" cols="100" value={value2} onChange={(event) => setValue2(event.target.value)}></textarea><br/>
+      <p>integer 1: </p> <textarea id="a" rows="6" cols="100" value={value1} onChange={(event) => {if(Calc.isValidInteger(event.target.value)) setValue1(event.target.value);}}></textarea><br/>
+      <p>integer 2: </p> <textarea id="b" rows="6" cols="100" value={value2} onChange={(event) => {if(Calc.isValidInteger(event.target.value)) setValue2(event.target.value);}}></textarea><br/>
       <p>operator: </p>
       <select id="op" onChange={(event) => setValueOp(event.target.value)}>
           <option value="+">+</option>
