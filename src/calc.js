@@ -13,7 +13,8 @@ export function getDigitAndCarry(n, base){
 function getDigitAndBorrow(n, base){
     if (n >= 0) return [n, 0];
     //console.log(base - ((-n) % base), Math.ceil((-n) / base));
-    return [base -  ((-n) % base), Math.ceil((-n) / base)];
+    if((-n) % base === 0) return [0, Math.ceil((-n) / base)];
+    else return [base -  ((-n) % base), Math.ceil((-n) / base)];
 }
 
 export function isValidInteger(text){
@@ -79,7 +80,9 @@ function minus(a, b){
     let j = b.length - 1;
     for(; j > -1; j--, i--){
         let digitAndCarry = getDigitAndBorrow(parseInt(a[i]) - parseInt(b[j]) - borrow, 10);
+        //console.log('digit & carray', digitAndCarry);
         res = digitAndCarry[0] + res; //adding from right to left (new digit is append to the left of the current result string)
+        //console.log('res', res);
         borrow = digitAndCarry[1];
     }
 
@@ -130,7 +133,8 @@ function mod(a, b){
         B = mulByTen(B);
     }
     let remain = trimZero(minus(a, B));          
-    
+    //console.log(remain, '=', a, '-', B);
+
     return mod(remain, b);
 }
 function trimZero(num){
